@@ -28,3 +28,5 @@ production:
   username: <%= ENV["DATABASE_USERNAME"] %>
   password: <%= ENV["DATABASE_PASSWORD"] %>
   database: railstutorial_production
+  host: database
+  port: 3306
