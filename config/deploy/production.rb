@@ -19,6 +19,7 @@ server 'all',
 
 set :rails_env, 'production'
 set :branch, 'master'
+set :linked_files, %w{config/database.yml}
 
 # role-based syntax
 # ==================
