@@ -85,14 +85,14 @@ class User < ActiveRecord::Base
 
   def generate_jwt
     key = Rails.application.secrets[:secret_key_base]
-    payload = {user_id: id, exp: Time.zone.now.to_i + 3600, iss: "young-oasis-99979.herokuapp.com"}
+    payload = {user_id: id, exp: Time.zone.now.to_i + 86400, iss: "young-oasis-99979.herokuapp.com"}
     JWT.encode(payload, key, 'HS256')
   end
 
   def User.decode_jwt(token)
-   key = Rails.application.secrets[:secret_key_base] 
+   key = Rails.application.secrets[:secret_key_base]
     begin
-      decoded_token = JWT.decode(token, key, true, {algorithm: 'HS256'}) 
+      decoded_token = JWT.decode(token, key, true, {algorithm: 'HS256'})
     rescue JWT::ExpiredSignature
       return nil
     end
